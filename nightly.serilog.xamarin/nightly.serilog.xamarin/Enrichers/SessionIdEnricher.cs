@@ -1,11 +1,10 @@
 using System;
 using Serilog.Core;
 using Serilog.Events;
-using Xamarin.Essentials;
 
-namespace nightly.serilog.xamarin
+namespace nightly.serilog.xamarin.Enrichers
 {
-    public class SessionEnricher : ILogEventEnricher
+    public class SessionIdEnricher : ILogEventEnricher
     {
         private LogEventProperty _cachedProperty;
 
