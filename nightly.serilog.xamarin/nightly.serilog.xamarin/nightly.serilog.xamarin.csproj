@@ -9,8 +9,4 @@
       <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Enrichers" />
-    </ItemGroup>
-
 </Project>
