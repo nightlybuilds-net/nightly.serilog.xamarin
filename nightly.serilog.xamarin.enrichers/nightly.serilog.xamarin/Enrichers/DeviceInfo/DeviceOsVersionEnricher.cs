@@ -1,15 +1,15 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace nightly.serilog.xamarin.enrichers.DeviceInfo
+namespace nightly.serilog.xamarin.Enrichers.DeviceInfo
 {
-    public class DeviceNameEnricher : ILogEventEnricher
+    public class DeviceOsVersionEnricher : ILogEventEnricher
     {
         private LogEventProperty _cachedProperty;
 
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            this._cachedProperty ??= propertyFactory.CreateProperty("DeviceName", Xamarin.Essentials.DeviceInfo.Name);
+            this._cachedProperty ??= propertyFactory.CreateProperty("DeviceOsVersion", Xamarin.Essentials.DeviceInfo.VersionString);
             logEvent.AddPropertyIfAbsent(this._cachedProperty);
         }
     }

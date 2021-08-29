@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightly.serilog.xamarin.enrichers", "nightly.serilog.xamarin.enrichers\nightly.serilog.xamarin.enrichers.csproj", "{E32DCBE0-868B-410B-A599-D4F8C98D74E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nightly.serilog.xamarin", "nightly.serilog.xamarin\nightly.serilog.xamarin.csproj", "{E32DCBE0-868B-410B-A599-D4F8C98D74E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

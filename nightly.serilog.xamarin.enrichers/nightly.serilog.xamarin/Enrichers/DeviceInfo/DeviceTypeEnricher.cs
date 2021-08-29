@@ -1,7 +1,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace nightly.serilog.xamarin.enrichers.DeviceInfo
+namespace nightly.serilog.xamarin.Enrichers.DeviceInfo
 {
     public class DeviceTypeEnricher : ILogEventEnricher
     {
