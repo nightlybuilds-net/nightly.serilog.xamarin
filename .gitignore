@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 nightly.serilog.xamarin.enrichers/.idea/.idea.nightly.serilog.xamarin.enrichers/.idea
+nightly.serilog.xamarin/.idea/.idea.nightly.serilog.xamarin.enrichers/.idea
