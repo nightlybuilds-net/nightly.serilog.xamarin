@@ -3,14 +3,13 @@ using nightly.serilog.xamarin.Enrichers;
 using nightly.serilog.xamarin.Enrichers.DeviceInfo;
 using nightly.serilog.xamarin.Enrichers.Display;
 using nightly.serilog.xamarin.Enrichers.Version;
-using nightly.serilog.xamarin.Sinks;
 using Serilog;
 using Serilog.Configuration;
 using Xamarin.Essentials;
 
 namespace nightly.serilog.xamarin
 {
-    public static class LoggerConfigurationExtensions
+    public static class EnrichersConfigurationExtensions
     {
         /// <summary>
         /// Add Session Id
@@ -69,15 +68,19 @@ namespace nightly.serilog.xamarin
             enrichment.With<CurrentVersionEnricher>();
             return enrichment.With<CurrentVersionBuildEnricher>();
         }
-    }
-    
-    public static class LoggerSinkExtensions
-    {
-        public static LoggerConfiguration DebugConsole(
-            this LoggerSinkConfiguration loggerConfiguration,
-            IFormatProvider formatProvider = null)
+
+
+        /// <summary>
+        /// Add all Version
+        /// </summary>
+        /// <param name="enrichment"></param>
+        /// <param name="usernameFunc">Fun to retrieve current user </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static LoggerConfiguration WithUserName(this LoggerEnrichmentConfiguration enrichment, Func<string> usernameFunc)
         {
-            return loggerConfiguration.Sink(new DebugConsoleSink(formatProvider));
+            if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
+            return enrichment.With(new UserNameEnricher(usernameFunc));
         }
     }
 }
