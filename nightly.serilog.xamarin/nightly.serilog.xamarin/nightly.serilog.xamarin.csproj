@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>8</LangVersion>
-        <PackageVersion>0.0.1</PackageVersion>
+        <PackageVersion>$(Version)</PackageVersion>
         <Title>nightly.serilog.xamarin</Title>
         <Authors>Marco Milani</Authors>
         <Description>Serilog enrichers based on Xamarin.Essentials</Description>
