@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore nightly.serilog.xamarin/nightly.serilog.xamarin/nightly.serilog.xamarin.csproj
       
     - name: Build and Pack
-      run: dotnet pack nightly.serilog.xamarin/nightly.serilog.xamarin/nightly.serilog.xamarin.csproj --configuration Release --no-restore --include-source /p:Version=${GITHUB_REF##*/} 
+      run: dotnet pack nightly.serilog.xamarin/nightly.serilog.xamarin/nightly.serilog.xamarin.csproj --configuration Release --no-restore --include-symbols /p:Version=${GITHUB_REF##*/} 
     
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
@@ -38,8 +38,5 @@ jobs:
     - name: Push to nuget
       run: dotnet nuget push nightly.serilog.xamarin/nightly.serilog.xamarin/bin/Release/nightly.serilog.xamarin.${GITHUB_REF##*/}.nupkg -k ${{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json
    
-    - name: Push symbols to nuget
-      run: dotnet nuget push nightly.serilog.xamarin/nightly.serilog.xamarin/bin/Release/nightly.serilog.xamarin.${GITHUB_REF##*/}.symbols.nupkg -k ${{ secrets.NUGET_KEY }} -s https://api.nuget.org/v3/index.json
-       
-
+    
     
