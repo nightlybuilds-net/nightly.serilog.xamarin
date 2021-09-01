@@ -33,6 +33,9 @@ jobs:
         name: nightly.serilog.xamarin
         # Directory containing files to upload
         path: nightly.serilog.xamarin/nightly.serilog.xamarin/bin/Release
+      
+    - name: list files
+      run: ls nightly.serilog.xamarin/nightly.serilog.xamarin/bin/Release
     
     - name: Push to nuget
     
