@@ -5,12 +5,25 @@ using nightly.serilog.xamarin.Enrichers.Display;
 using nightly.serilog.xamarin.Enrichers.Version;
 using Serilog;
 using Serilog.Configuration;
-using Xamarin.Essentials;
 
 namespace nightly.serilog.xamarin
 {
     public static class EnrichersConfigurationExtensions
     {
+        
+        /// <summary>
+        /// Add univoque id to device
+        /// Value is stored in SecureStorage
+        /// </summary>
+        /// <param name="enrichment"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static LoggerConfiguration WithDeviceId(this LoggerEnrichmentConfiguration enrichment)
+        {
+            if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
+            return enrichment.With<DeviceIdEnricher>();
+        }
+        
         /// <summary>
         /// Add Session Id
         /// </summary>
