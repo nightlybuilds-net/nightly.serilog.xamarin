@@ -12,6 +12,18 @@ namespace nightly.serilog.xamarin
     {
         
         /// <summary>
+        /// Add a property Development with value true
+        /// </summary>
+        /// <param name="enrichment"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static LoggerConfiguration WithDevelopment(this LoggerEnrichmentConfiguration enrichment)
+        {
+            if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
+            return enrichment.With<DevelopmentEnricher>();
+        }
+        
+        /// <summary>
         /// Add univoque id to device
         /// Value is stored in SecureStorage
         /// </summary>

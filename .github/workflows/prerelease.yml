@@ -6,7 +6,8 @@ name: PreRelease
 # events but only for the master branch
 on:
   push:
-    branches: [ develop ]
+    branches: 
+    - develop
 
 env:
     next_mode: preminor
