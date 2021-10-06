@@ -10,17 +10,17 @@ namespace nightly.serilog.xamarin
 {
     public static class EnrichersConfigurationExtensions
     {
-        
         /// <summary>
-        /// Add a property Development with value true
+        /// Add a property Development with passed value
         /// </summary>
         /// <param name="enrichment"></param>
+        /// <param name="isDevelopment"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static LoggerConfiguration WithDevelopment(this LoggerEnrichmentConfiguration enrichment)
+        public static LoggerConfiguration WithDevelopment(this LoggerEnrichmentConfiguration enrichment, bool isDevelopment)
         {
             if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
-            return enrichment.With<DevelopmentEnricher>();
+            return enrichment.With(new DevelopmentEnricher(isDevelopment));
         }
         
         /// <summary>
