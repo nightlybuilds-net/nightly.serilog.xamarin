@@ -42,10 +42,10 @@ namespace nightly.serilog.xamarin
         /// <param name="enrichment"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static LoggerConfiguration WithSessionId(this LoggerEnrichmentConfiguration enrichment)
+        public static LoggerConfiguration WithSessionId(this LoggerEnrichmentConfiguration enrichment, string sessionId = null)
         {
             if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
-            return enrichment.With<SessionIdEnricher>();
+            return enrichment.With(new SessionIdEnricher(sessionId));
         }
         
         /// <summary>
