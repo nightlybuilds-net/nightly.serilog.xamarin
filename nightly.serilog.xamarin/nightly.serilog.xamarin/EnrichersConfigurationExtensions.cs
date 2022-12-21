@@ -63,6 +63,7 @@ namespace nightly.serilog.xamarin
             enrichment.With<DeviceNameEnricher>();
             enrichment.With<DeviceOsVersionEnricher>();
             enrichment.With<DevicePlatformEnricher>();
+            enrichment.With<DeviceLangEnricher>();
             return enrichment.With<DeviceTypeEnricher>();
         }
         
