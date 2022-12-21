@@ -23,6 +23,12 @@ namespace nightly.serilog.xamarin
             return enrichment.With(new DevelopmentEnricher(isDevelopment));
         }
         
+        public static LoggerConfiguration WithDeviceLang(this LoggerEnrichmentConfiguration enrichment)
+        {
+            if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
+            return enrichment.With(new DeviceLangEnricher());
+        }
+        
         /// <summary>
         /// Add univoque id to device
         /// Value is stored in SecureStorage
