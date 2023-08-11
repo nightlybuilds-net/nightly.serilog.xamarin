@@ -23,6 +23,12 @@ namespace nightly.serilog.xamarin
             return enrichment.With(new DevelopmentEnricher(isDevelopment));
         }
         
+        public static LoggerConfiguration WithDeviceLang(this LoggerEnrichmentConfiguration enrichment)
+        {
+            if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
+            return enrichment.With(new DeviceLangEnricher());
+        }
+        
         /// <summary>
         /// Add univoque id to device
         /// Value is stored in SecureStorage
@@ -42,10 +48,10 @@ namespace nightly.serilog.xamarin
         /// <param name="enrichment"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static LoggerConfiguration WithSessionId(this LoggerEnrichmentConfiguration enrichment)
+        public static LoggerConfiguration WithSessionId(this LoggerEnrichmentConfiguration enrichment, string sessionId = null)
         {
             if (enrichment == null) throw new ArgumentNullException(nameof(enrichment));
-            return enrichment.With<SessionIdEnricher>();
+            return enrichment.With(new SessionIdEnricher(sessionId));
         }
         
         /// <summary>
@@ -63,6 +69,7 @@ namespace nightly.serilog.xamarin
             enrichment.With<DeviceNameEnricher>();
             enrichment.With<DeviceOsVersionEnricher>();
             enrichment.With<DevicePlatformEnricher>();
+            enrichment.With<DeviceLangEnricher>();
             return enrichment.With<DeviceTypeEnricher>();
         }
         
