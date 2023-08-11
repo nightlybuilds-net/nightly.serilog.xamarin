@@ -11,20 +11,21 @@ namespace nightly.serilog.xamarin.Sinks
     public class DebugConsoleSink : ILogEventSink
     {
         private readonly IFormatProvider _formatProvider;
+        private readonly bool _enabled;
 
-        public DebugConsoleSink(IFormatProvider formatProvider)
+        public DebugConsoleSink(IFormatProvider formatProvider, bool enabled)
         {
             this._formatProvider = formatProvider;
+            _enabled = enabled;
         }
 
         public void Emit(LogEvent logEvent)
         {
-            #if DEBUG
+            if (!this._enabled) return;
             this.SetConsoleColor(logEvent);
             var message = logEvent.RenderMessage(_formatProvider);
             Console.WriteLine(DateTimeOffset.Now + " "  + message);
             Console.ResetColor();
-            #endif
         }
 
         private void SetConsoleColor(LogEvent logEvent)
